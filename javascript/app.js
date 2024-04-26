@@ -1,5 +1,4 @@
-// import '../css/final.css';
-
+import '../css/final.css';
 
 const URL = "https://api.github.com/user";
 const Emoji = "https://api.github.com/emojis";
@@ -151,6 +150,9 @@ const languageTitles = {
   Python: "Python Master",
   C: "C Master",
   Css: "Css Master",
+  Scss: "Scss Master",
+  Shell: "Shell Master",
+  Java: "Java Master",
 };
 
 function countLanguages(data) {
@@ -158,7 +160,6 @@ function countLanguages(data) {
   let totalRepos = 0;
   let dominantLanguage = { name: null, count: 0, title: null };
 
-  // Count each language occurrence
   data.forEach((repo) => {
     const { language } = repo;
     if (language) {
@@ -172,7 +173,7 @@ function countLanguages(data) {
       if (languageCount[language] > dominantLanguage.count) {
         dominantLanguage.name = language;
         dominantLanguage.count = languageCount[language];
-        dominantLanguage.title = languageTitles[language] || "Language Master"; // Default title
+        dominantLanguage.title = languageTitles[language] || "Language Master";
       }
     }
   });
@@ -183,12 +184,6 @@ function countLanguages(data) {
     const percentage = ((count / totalRepos) * 100).toFixed(2);
     languagePercentages[language] = `${percentage}%`;
   }
-
-  console.log("Counts:", languageCount);
-  console.log("Percentages:", languagePercentages);
-  console.log("Total Repositories with Specified Language:", totalRepos);
-  console.log("Dominant Language:", dominantLanguage);
-
   const master = document.querySelector(".master");
   master.textContent = dominantLanguage.title;
 
@@ -223,11 +218,11 @@ function chartGithub(languageCount, languagePercentages) {
   }
 
   if (donateChart) {
-    doughnutChartInstance.destroy();
+    donateChart.destroy();
     donateChart = null;
     console.log("Doughnut chart destroyed.");
   }
-   radarChart = new Chart(radar, {
+  radarChart = new Chart(radar, {
     type: "radar",
     data: {
       labels: labelR,
@@ -250,7 +245,7 @@ function chartGithub(languageCount, languagePercentages) {
     },
   });
 
-  const donateChart = new Chart(donate, {
+  donateChart = new Chart(donate, {
     type: "doughnut",
     data: {
       labels: labelD,
@@ -259,7 +254,7 @@ function chartGithub(languageCount, languagePercentages) {
           label: "Language Percentage",
           data: dataPourcentage,
           backgroundColor: [
-            "rgba(255, 99, 132, 0.8)", 
+            "rgba(255, 99, 132, 0.8)",
             "rgba(54, 162, 235, 0.8)",
             "rgba(255, 206, 86, 0.8)",
             "rgba(75, 192, 192, 0.8)",
