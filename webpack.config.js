@@ -6,7 +6,6 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const ImageminPlugin = require("imagemin-webpack-plugin").default;
 const Dotenv = require('dotenv-webpack');
 
-// Determine the mode from the environment, default to 'development'
 const mode = process.env.NODE_ENV || 'development';
 const isProduction = mode === 'production';
 

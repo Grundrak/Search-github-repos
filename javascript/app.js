@@ -1,11 +1,11 @@
-import '../css/final.css';
+// import '../css/final.css';
 
 const URL = "https://api.github.com/user";
 const Emoji = "https://api.github.com/emojis";
 const requestOption = {
   method: "GET",
   headers: {
-    Authorization: `token ${""}`,
+    Authorization: `token ${"Secret"}`,
   },
   redirect: "follow",
 };
