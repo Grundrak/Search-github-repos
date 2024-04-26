@@ -5,7 +5,7 @@ const Emoji = "https://api.github.com/emojis";
 const requestOption = {
   method: "GET",
   headers: {
-    Authorization: `token ${"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"}`,
+    Authorization: `token ${""}`,
   },
   redirect: "follow",
 };
